@@ -1,0 +1,106 @@
+\documentclass{article}
+% Use this command to override the default ACM copyright statement
+% (e.g. for preprints).  Consult the conference website for the
+% camera-ready copyright statement.
+
+% Load basic packages
+\usepackage{balance}  % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead 
+\usepackage{txfonts}
+\usepackage{times}    % comment if you want LaTeX's default font
+\usepackage[pdftex]{hyperref}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{ccicons}
+\usepackage{todonotes}
+\usepackage{csquotes}
+\usepackage{url}
+\usepackage{pdfpages}
+\usepackage{times}
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
+\makeatother
+\urlstyle{leo}
+
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, to give it a
+% fighting chance of not being over-written, since its job is to
+% redefine many LaTeX commands.
+\definecolor{linkColor}{RGB}{6,125,233}
+\hypersetup{
+  pdftitle={Programming languages of cities},
+  pdfauthor={LaTeX},
+  pdfkeywords={},
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=linkColor,
+  breaklinks=true,
+}
+
+\pagenumbering{arabic}  % Arabic page numbers for submission.  Remove this line to eliminate 
+
+\setcounter{secnumdepth}{3} % Automatically adds section numbers
+
+% Beginning of document.
+\begin{document}
+
+\title{Assigning programming languages to cities based on GitHub users activities}
+
+\author{
+   Gelera, Rodney \\University of Victoria
+   \and
+   McCulloch, Kaileen \\University of Victoria
+   \and
+   Warwick, Nick \\University of Victoria
+}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\begin{abstract}
+\end{abstract}
+
+\section{Introduction}
+\section{Related Work}
+\section{Data Collections}
+   \subsection{Scraping}
+   \subsection{Mapping}
+\section{Data Mining}
+\section{Data Visualization}
+\section{Conclusion}
+
+% REFERENCES FORMAT
+% References must be the same font size as other body text.
+\bibliographystyle{SIGCHI-Reference-Format}
+\bibliography{../../latex_files/refs}
+\citation
+\pagebreak
+\onecolumn
+\begingroup
+
+%\includepdf[scale=.85,pages={1-3},pagecommand=\subsection{Appendix B}]{./figures/questionnaire3.pdf}
+
+\section{Appendix A}
+\subsection{Code}
+\endgroup
+
+\end{document}
+
