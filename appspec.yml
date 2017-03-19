@@ -23,16 +23,8 @@ os: linux
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
 files:
-  - source: /css
-    destination: /var/www/html/
-  - source: /js
-    destination: /var/www/html/
-  - source: /node_modules
-    destination: /var/www/html/
-  - source: /README.md
-    destination: /var/www/html/
-  - source: /index.html
-    destination: /var/www/html/  
+  - source: /
+    destination: /var/www/html/ 
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions" 
 #   section here that describes special permissions to apply to the files 
