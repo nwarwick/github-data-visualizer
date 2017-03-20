@@ -45,10 +45,7 @@ function mode(array) {
 }
 
 // how many users to scrape through
-var limit = 100;
-
-// regex for valid string
-var ascii = /^[ -~\t\n\r]+$/;
+var limit = 5;
 
 // get list of users from csv file
 fs.createReadStream(inputFile)
@@ -57,6 +54,7 @@ fs.createReadStream(inputFile)
 		// process each user asyncronously
 		async.eachSeries(
 			csvrow.slice(0,limit - 1),
+			//csvrow,
 			function(user, callback) {
 				console.log("Processing user: " + user + "...");
 				url = user;
@@ -68,14 +66,10 @@ fs.createReadStream(inputFile)
 					} else {
 						data = JSON.parse(data);
 						if (data.location) {
-							if ( !ascii.test( data.location ) ) {
-							  	// string has non-ascii characters
-							  	console.log("--- Invalid location, skipping");
-							  	callback();
-							} else {
-								// convert location to coordinates
-								console.log("--- Converting " + user + "'s location " + data.location + " to coordinates...");
-								geocoder.geocode(data.location, function(err, res) {
+							// convert location to coordinates
+							console.log("--- Converting " + user + "'s location " + data.location + " to coordinates...");
+							geocoder.geocode(data.location, function(err, res) {
+								if (res.length > 0) {
 									console.log("------ Converted " + data.location + " to " + res[0].formattedAddress);
 									console.log("------ " + res[0].latitude + " " + res[0].longitude);
 									//console.log(res);
@@ -101,8 +95,11 @@ fs.createReadStream(inputFile)
 										users.features.push(geojson);
 										callback();
 									});
-								});
-							}
+								} else {
+									console.log("--- Invalid location, skipping");
+						  			callback();
+								}
+							});
 						} else { //empty location
 							console.log("--- No location, skipping.");
 							callback();
