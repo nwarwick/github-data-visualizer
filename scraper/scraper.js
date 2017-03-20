@@ -36,6 +36,7 @@ function mode(array) {
             maxEl = el;
             maxCount = modeMap[el];
         } else if (modeMap[el] == maxCount) {
+        	// tie
             maxEl += '&' + el;
             maxCount = modeMap[el];
         }
@@ -43,7 +44,11 @@ function mode(array) {
     return maxEl;
 }
 
+// how many users to scrape through
 var limit = 100;
+
+// regex for valid string
+var ascii = /^[ -~\t\n\r]+$/;
 
 // get list of users from csv file
 fs.createReadStream(inputFile)
@@ -63,35 +68,41 @@ fs.createReadStream(inputFile)
 					} else {
 						data = JSON.parse(data);
 						if (data.location) {
-							// convert location to coordinates
-							console.log("--- Converting " + user + "'s location " + data.location + " to coordinates...");
-							geocoder.geocode(data.location, function(err, res) {
-								console.log("------ Converted " + data.location + " to " + res[0].formattedAddress);
-								console.log("------ " + res[0].latitude + " " + res[0].longitude);
-								//console.log(res);
-								geojson = {};
-								geojson.type = "Feature";
-								geojson.geometry = {"type": "Point", "coordinates": [res[0].latitude, res[0].longitude]};
-								
-								// get languages used
-								console.log("--- Getting most language most used by " + user + "...");
-								url = user + '?tab=repositories';
-								var langs = [];
-								gs(url, function(err, data) {
-									//console.log(data);
-									for (var i = 0; i < data.entries.length; i++) {
-										//console.log(data.entries[i].lang);
-										langs.push(data.entries[i].lang);
-									}
-									//console.log(langs);
-									var mostUsed = mode(langs);
-									console.log("------ Most used language: " + mostUsed);
-									geojson.properties = {"user": user, "language": mostUsed};
+							if ( !ascii.test( data.location ) ) {
+							  	// string has non-ascii characters
+							  	console.log("--- Invalid location, skipping");
+							  	callback();
+							} else {
+								// convert location to coordinates
+								console.log("--- Converting " + user + "'s location " + data.location + " to coordinates...");
+								geocoder.geocode(data.location, function(err, res) {
+									console.log("------ Converted " + data.location + " to " + res[0].formattedAddress);
+									console.log("------ " + res[0].latitude + " " + res[0].longitude);
+									//console.log(res);
+									geojson = {};
+									geojson.type = "Feature";
+									geojson.geometry = {"type": "Point", "coordinates": [res[0].latitude, res[0].longitude]};
 									
-									users.features.push(geojson);
-									callback();
+									// get languages used
+									console.log("--- Getting most language most used by " + user + "...");
+									url = user + '?tab=repositories';
+									var langs = [];
+									gs(url, function(err, data) {
+										//console.log(data);
+										for (var i = 0; i < data.entries.length; i++) {
+											//console.log(data.entries[i].lang);
+											langs.push(data.entries[i].lang);
+										}
+										//console.log(langs);
+										var mostUsed = mode(langs);
+										console.log("------ Most used language: " + mostUsed);
+										geojson.properties = {"user": user, "language": mostUsed};
+										
+										users.features.push(geojson);
+										callback();
+									});
 								});
-							});
+							}
 						} else { //empty location
 							console.log("--- No location, skipping.");
 							callback();
@@ -101,6 +112,7 @@ fs.createReadStream(inputFile)
 			},
 			function done(){
 				// called when everything is done
+				console.log("Number of users scraped: " + users.features.length)
 				jsonfile.writeFile(outputFile, users);
 			}
 		);
