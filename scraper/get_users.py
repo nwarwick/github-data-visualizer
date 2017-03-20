@@ -5,6 +5,8 @@ import time
 # get list of users
 users = []
 print "Make sure this is being run within the 'scraper' directory!"
+print "and PULL master before running this!"
+
 
 r = int(input('Number of requests to make (60 max per IP per hour): '))
 #r = 20 # number of requests to make
