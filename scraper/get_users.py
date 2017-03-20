@@ -3,8 +3,9 @@ import json
 
 # get list of users
 users = []
+print "Make sure this is being run within the 'scraper' directory!"
 
-r = int(input('Number of requests to make: '))
+r = int(input('Number of requests to make (60 max per IP per hour): '))
 #r = 20 # number of requests to make
 
 user_start = int(input('User ID to start at (inclusive): '))
