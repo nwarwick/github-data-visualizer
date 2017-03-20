@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 # get list of users
 users = []
@@ -13,6 +14,8 @@ since = user_start - 1
 for i in range(0, r):
 	r = requests.get('https://api.github.com/users?since={}'.format(since))
 	if r.status_code is not 200:
+		reset_time = r.headers['X-RateLimit-Reset']
+		print "Reset Time: " + time.strftime("%Z - %Y/%m/%d, %H:%M:%S", time.localtime(float(reset_time)))
 		print r.json()['message']
 		break
 	j = r.json()
