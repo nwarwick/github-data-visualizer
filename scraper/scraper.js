@@ -15,11 +15,40 @@ var outputFile = 'scraped_data/data.json';
 var users = {"type": "FeatureCollection",
 			 "features": []};
 
+function mode(array) {
+    if (array.length == 0)
+        return null;
+
+    var modeMap = {},
+        maxEl = array[0],
+        maxCount = 1;
+
+    for(var i = 0; i < array.length; i++) {
+        var el = array[i];
+
+        if (modeMap[el] == null) {
+            modeMap[el] = 1;
+        } else {
+            modeMap[el]++;
+        }
+
+        if (modeMap[el] > maxCount) {
+            maxEl = el;
+            maxCount = modeMap[el];
+        } else if (modeMap[el] == maxCount) {
+            maxEl += '&' + el;
+            maxCount = modeMap[el];
+        }
+    }
+    return maxEl;
+}
+
+var limit = 100;
+
 // get list of users from csv file
 fs.createReadStream(inputFile)
 	.pipe(parse({delimiter: ','}))
 	.on('data', function(csvrow) {
-		var limit = 5;
 		// process each user asyncronously
 		async.eachSeries(
 			csvrow.slice(0,limit - 1),
@@ -43,10 +72,25 @@ fs.createReadStream(inputFile)
 								geojson = {};
 								geojson.type = "Feature";
 								geojson.geometry = {"type": "Point", "coordinates": [res[0].latitude, res[0].longitude]};
-								geojson.properties = {"user": user, "language": ""};
-								users.features.push(geojson);
-								//console.log(data);
-								callback();
+								
+								// get languages used
+								console.log("--- Getting most language most used by " + user + "...");
+								url = user + '?tab=repositories';
+								var langs = [];
+								gs(url, function(err, data) {
+									//console.log(data);
+									for (var i = 0; i < data.entries.length; i++) {
+										//console.log(data.entries[i].lang);
+										langs.push(data.entries[i].lang);
+									}
+									//console.log(langs);
+									var mostUsed = mode(langs);
+									console.log("------ Most used language: " + mostUsed);
+									geojson.properties = {"user": user, "language": mostUsed};
+									
+									users.features.push(geojson);
+									callback();
+								});
 							});
 						} else { //empty location
 							console.log("--- No location, skipping.");
@@ -61,9 +105,4 @@ fs.createReadStream(inputFile)
 			}
 		);
 	});
-
-
-/*
-var url = val; // github username goes here
-*/
 
