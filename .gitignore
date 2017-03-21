@@ -88,5 +88,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
+
+# Dependencies
+node_modules/
+
 # Custom
-/data
+data/

@@ -1,0 +1,15 @@
+{
+    "name": "github-data-visualizer",
+    "version": "0.0.1",
+    "dependencies": {
+        "firebase": "^3.7.1",
+        "firebase-tools": "^3.5.0",
+        "async": "^2.1.5",
+        "csv-parse": "^1.2.0",
+        "github-scraper": "^3.1.0",
+        "jsonfile": "^2.4.0",
+        "node-geocoder": "^3.16.0",
+        "request": "^2.81.0",
+        "request-promise": "^4.2.0"
+    }
+}
