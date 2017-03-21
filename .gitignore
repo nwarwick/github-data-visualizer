@@ -90,7 +90,7 @@ ENV/
 
 
 # Dependencies
-/node_modules
+node_modules/
 
 # Custom
-/data
+data/
