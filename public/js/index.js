@@ -1,12 +1,15 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibndhcndpY2siLCJhIjoiY2owYWR6NnZoMDA3NTMzb2F3aGQ2YXpvZyJ9.vQzH-hYOzRMurslNpAfiSg';
 
-console.log("test1");
-
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/dark-v9', //hosted style id
     center: [0, 0], // starting position
-    zoom: 2 // starting zoom
+    zoom: 2, // starting zoom
+    renderWorldCopies: false,
+    maxBounds: [
+        [-180, -85],
+        [180, 85]
+    ]
 });
 
 map.on('load', function() {
@@ -22,7 +25,7 @@ map.on('load', function() {
             'visibility': 'visible'
         },
         'paint': {
-            'circle-radius': 10,
+            'circle-radius': 5,
             'circle-color': {
                 property: 'language',
                 type: 'categorical',
@@ -109,4 +112,29 @@ map.on('load', function() {
     });
 });
 
-console.log("test4");
+// When a click event occurs near a place, open a popup at the location of
+// the feature, with description HTML from its properties.
+map.on('click', function(e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['users'] });
+
+    if (!features.length) {
+        return;
+    }
+
+    var feature = features[0];
+
+    // Populate the popup and set its coordinates
+    // based on the feature found.
+    var popup = new mapboxgl.Popup()
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(feature.properties.language)
+        .addTo(map);
+});
+
+
+// Use the same approach as above to indicate that the symbols are clickable
+// by changing the cursor style to 'pointer'.
+map.on('mousemove', function(e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['users'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+});
