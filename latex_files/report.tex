@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 % Use this command to override the default ACM copyright statement
 % (e.g. for preprints).  Consult the conference website for the
 % camera-ready copyright statement.
@@ -18,6 +18,7 @@
 \usepackage{url}
 \usepackage{pdfpages}
 \usepackage{times}
+\usepackage[margin=1in]{geometry}
 
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
@@ -60,7 +61,7 @@
 % Beginning of document.
 \begin{document}
 
-\title{Assigning programming languages to cities based on GitHub users activities}
+\title{Assigning programming languages to geographic locations based on the activities of GitHub users}
 
 \author{
    Gelera, Rodney \\University of Victoria
@@ -76,17 +77,24 @@
 \newpage
 
 \begin{abstract}
-Data has never before been generated at such high speeds. With the ever increasing volume of data it has become more and more challenging to sift through and extract useful information. Data mining and data visualization are two tools that can help solve this problem. In this paper we are going to use classification to simplify the information and a visualizer for quick and easy evaluation of information.
+Data has never before been generated at such high speeds. With the ever increasing volume of data becoming available every second, it has become more and more challenging to find meaningful information. Data mining and data visualization are two tools that can help solve this problem. In this paper we are going to use a classification hnique to simplify information and a visualizer as a quick and easy evaluation method. In order to explore these techniques we going to use GitHub user data to explore the use of programming languages according to geographic locations. We have scraped GitHub user profiles to get a location and a programming language for each user. From that we can classify each unique geographic location with a single programming language then our visualization tool allows us to explore the geographic distribution of language usage. There is a vast variety of development platforms available, selecting which tools to use can be a challenge. Whether you are a professional looking to stay in the game in this competitive climate or a person just starting their career in tech, looking at the language of choice in your area will help you make a more informed decision.
 \end{abstract}
 
 \section{Introduction}
-\section{Related Work}
-\section{Data Collections}
-   \subsection{Scraping}
-   \subsection{Mapping}
-\section{Data Mining}
-\section{Data Visualization}
+GitHub is a popular online resource for software development. 
+\section{Related Work?}
+\section{Process}
+Tools used: GitHub, AWS CodeDeploy, Google Maps Geocoding API,  
+   \subsection{Data Retrieval}
+      \subsubsection{Downloading Data}
+The GitHub API returns JSON data with, among other things, user geographic location and programming language. Unfortunately, the API has a request limitation of 60 requests per hour. Each request return information for 30 users. In order to get 18000 user profiles it would take one IP 10 hours to download. This does not make for a fast or effective process.
+      \subsubsection{Determining user location}
+GitHub allows users to next their location as a free-form text. This can be problematic for getting exact coordinates for a users location. Google Maps has a Geocoding API which converts text strings of geographic locations into latitudional and longitudional coordinates. Unfortunately this API has a usage limitation of 2,500 free requests per day. 
+   \subsection{Data Mining}
+The data retrieved in the \textit{Data Retrieval} step needed to be converted into a geojson format into to be input into the \textit{Data Visualizer}. Additionally, the user data needed to be aggregrated on a geographic location basis in order to classification each unique location with a single programming language.
+   \subsection{Data Visualization}
 \section{Conclusion}
+\section{Future Work}
 
 % REFERENCES FORMAT
 % References must be the same font size as other body text.
