@@ -47,9 +47,9 @@ function mode(array) {
 }
 
 // how many users to scrape through
-//var limit = 5;
+//var limit = 11000;
 
-var tracker = 0;
+var tracker = 10999;
 
 // get list of users from csv file
 fs.createReadStream(inputFile)
@@ -57,8 +57,8 @@ fs.createReadStream(inputFile)
 	.on('data', function(csvrow) {
 		// process each user asyncronously
 		async.eachSeries(
-			//csvrow.slice(0,limit - 1),
-			csvrow,
+			csvrow.slice(10999),
+			//csvrow,
 			function(user, callback) {
 				console.log("[" + tracker + "]: Processing user: " + user + "...");
 				url = user;
@@ -92,19 +92,26 @@ fs.createReadStream(inputFile)
 										url = user + '?tab=repositories';
 										var langs = [];
 										gs(url, function(err, data) {
-											//console.log(data);
-											for (var i = 0; i < data.entries.length; i++) {
-												//console.log(data.entries[i].lang);
-												langs.push(data.entries[i].lang);
+											if (data === undefined) {
+												console.log("[" + tracker + "]: ------ Repository page broken");
+												tracker++;
+												callback();
+											} else {
+												//console.log(data);
+												for (var i = 0; i < data.entries.length; i++) {
+													//console.log(data.entries[i].lang);
+													langs.push(data.entries[i].lang);
+												}
+												//console.log(langs);
+												var mostUsed = mode(langs);
+												console.log("[" + tracker + "]: ------ Most used language: " + mostUsed);
+												geojson.properties = {"user": user, "language": mostUsed};
+												
+												users.features.push(geojson);
+												tracker++;
+												callback();
 											}
-											//console.log(langs);
-											var mostUsed = mode(langs);
-											console.log("[" + tracker + "]: ------ Most used language: " + mostUsed);
-											geojson.properties = {"user": user, "language": mostUsed};
 											
-											users.features.push(geojson);
-											tracker++;
-											callback();
 										});
 									} else {
 										console.log("[" + tracker + "]: ------ Invalid location, skipping");
