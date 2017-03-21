@@ -45,7 +45,9 @@ function mode(array) {
 }
 
 // how many users to scrape through
-var limit = 5;
+//var limit = 5;
+
+var tracker = 0;
 
 // get list of users from csv file
 fs.createReadStream(inputFile)
@@ -53,55 +55,65 @@ fs.createReadStream(inputFile)
 	.on('data', function(csvrow) {
 		// process each user asyncronously
 		async.eachSeries(
-			csvrow.slice(0,limit - 1),
-			//csvrow,
+			//csvrow.slice(0,limit - 1),
+			csvrow,
 			function(user, callback) {
-				console.log("Processing user: " + user + "...");
+				console.log("[" + tracker + "]: Processing user: " + user + "...");
 				url = user;
 				gs(url, function(err, data) {
 					//console.log(user + " profile data: \n" + JSON.stringify(data));
 					if (typeof data == "object") {
-						console.log("--- Broken user profile, skipping.");
+						console.log("[" + tracker + "]: --- Broken user profile, skipping.");
+						tracker++;
 						callback();
 					} else {
 						data = JSON.parse(data);
 						if (data.location) {
 							// convert location to coordinates
-							console.log("--- Converting " + user + "'s location " + data.location + " to coordinates...");
+							console.log("[" + tracker + "]: --- Converting " + user + "'s location " + data.location + " to coordinates...");
 							geocoder.geocode(data.location, function(err, res) {
-								if (res.length > 0) {
-									console.log("------ Converted " + data.location + " to " + res[0].formattedAddress);
-									console.log("------ " + res[0].latitude + " " + res[0].longitude);
-									//console.log(res);
-									geojson = {};
-									geojson.type = "Feature";
-									geojson.geometry = {"type": "Point", "coordinates": [res[0].latitude, res[0].longitude]};
-									
-									// get languages used
-									console.log("--- Getting most language most used by " + user + "...");
-									url = user + '?tab=repositories';
-									var langs = [];
-									gs(url, function(err, data) {
-										//console.log(data);
-										for (var i = 0; i < data.entries.length; i++) {
-											//console.log(data.entries[i].lang);
-											langs.push(data.entries[i].lang);
-										}
-										//console.log(langs);
-										var mostUsed = mode(langs);
-										console.log("------ Most used language: " + mostUsed);
-										geojson.properties = {"user": user, "language": mostUsed};
-										
-										users.features.push(geojson);
-										callback();
-									});
+								if (res === undefined) { // error
+									console.log("[" + tracker + "]: ------ Error with geocoder, skipping");
+									tracker++;
+									callback();
 								} else {
-									console.log("--- Invalid location, skipping");
-						  			callback();
+									if (res.length > 0) {
+										console.log("[" + tracker + "]: ------ Converted " + data.location + " to " + res[0].formattedAddress);
+										console.log("[" + tracker + "]: ------ " + res[0].latitude + " " + res[0].longitude);
+										//console.log(res);
+										geojson = {};
+										geojson.type = "Feature";
+										geojson.geometry = {"type": "Point", "coordinates": [res[0].longitude, res[0].latitude]};
+										
+										// get languages used
+										console.log("[" + tracker + "]: --- Getting most language most used by " + user + "...");
+										url = user + '?tab=repositories';
+										var langs = [];
+										gs(url, function(err, data) {
+											//console.log(data);
+											for (var i = 0; i < data.entries.length; i++) {
+												//console.log(data.entries[i].lang);
+												langs.push(data.entries[i].lang);
+											}
+											//console.log(langs);
+											var mostUsed = mode(langs);
+											console.log("[" + tracker + "]: ------ Most used language: " + mostUsed);
+											geojson.properties = {"user": user, "language": mostUsed};
+											
+											users.features.push(geojson);
+											tracker++;
+											callback();
+										});
+									} else {
+										console.log("[" + tracker + "]: ------ Invalid location, skipping");
+										tracker++;
+							  			callback();
+									}
 								}
 							});
 						} else { //empty location
-							console.log("--- No location, skipping.");
+							console.log("[" + tracker + "]: --- No location, skipping.");
+							tracker++;
 							callback();
 						}	
 					}		
