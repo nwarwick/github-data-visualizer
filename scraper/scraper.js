@@ -6,7 +6,9 @@ var jsonfile = require('jsonfile');
 var NodeGeocoder = require('node-geocoder');
 
 var options = {
-	provider: 'google'
+	provider: 'google',
+	httpAdapter: 'https',
+	apiKey: 'AIzaSyAS2R9l7yKzH8hAphLuCVPn1KR-MlZKQkY'
 };
 var geocoder = NodeGeocoder(options);
 
@@ -62,7 +64,7 @@ fs.createReadStream(inputFile)
 				url = user;
 				gs(url, function(err, data) {
 					//console.log(user + " profile data: \n" + JSON.stringify(data));
-					if (typeof data == "object") {
+					if (typeof data == "object" || err) {
 						console.log("[" + tracker + "]: --- Broken user profile, skipping.");
 						tracker++;
 						callback();
