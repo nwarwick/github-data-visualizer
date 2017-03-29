@@ -49,7 +49,7 @@ function mode(array) {
 // how many users to scrape through
 //var limit = 11000;
 
-var tracker = 10999;
+var tracker = 19800;
 
 // get list of users from csv file
 fs.createReadStream(inputFile)
@@ -57,7 +57,7 @@ fs.createReadStream(inputFile)
 	.on('data', function(csvrow) {
 		// process each user asyncronously
 		async.eachSeries(
-			csvrow.slice(10999),
+			csvrow.slice(tracker),
 			//csvrow,
 			function(user, callback) {
 				console.log("[" + tracker + "]: Processing user: " + user + "...");
