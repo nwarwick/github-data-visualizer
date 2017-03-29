@@ -45,16 +45,19 @@ for k, v in data.items():
 					user_data[coord][lang] = 1
 				else:
 					user_data[coord][lang] = user_data[coord][lang]+1
-
+print len(user_data.keys())
 
 for key,coord in user_data.items():
+	print coord
 	max_count = 0
 	max_lang = ''
 	for lang, count in coord.items():
-		if count > max_count:
+		print 'Curr_max: '+max_lang
+		print 'Checking: '+str(lang)+', with count = '+str(count)
+		if (count > max_count) or (max_count == count and max_lang == 'Null') or (max_count == count and lang != 'Null'):
 			max_count = count
 			max_lang = lang
-	new_item= '{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":'+str(key)+'},\"properties\":{\"user\":\"\",\"language\":\"'+lang+'\"}},'
+	new_item= '{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":'+str(key)+'},\"properties\":{\"user\":\"\",\"language\":\"'+max_lang+'\"}},'
 	print new_item
 	output += new_item
 
@@ -63,6 +66,7 @@ output += ']}'
 data_file = open('data.json', 'wb')
 data_file.write(output)
 data_file.close
+
 
 
 # Calculate distance between two geographic points
