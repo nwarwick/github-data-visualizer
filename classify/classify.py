@@ -57,7 +57,7 @@ for key,coord in user_data.items():
 		if count > max_count:
 			max_count = count
 			max_lang = lang
-	new_item= '{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":'+str(key)+'},\"properties\":{\"user\":\"\",\"language\":\"'+lang+'\"}}'
+	new_item= '{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":'+str(key)+'},\"properties\":{\"user\":\"\",\"language\":\"'+lang+'\"}},'
 	print new_item
 	output += new_item
 
