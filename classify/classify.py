@@ -36,7 +36,7 @@ for k, v in data.items():
 			coord = str(coord)
 			langs = item['properties']['language']
 			if langs == None:
-				langs = ''
+				langs = 'Null'
 			for lang in langs.split('&'):
 				if coord not in user_data.keys():
 					user_data[coord] = {} 
@@ -46,11 +46,8 @@ for k, v in data.items():
 				else:
 					user_data[coord][lang] = user_data[coord][lang]+1
 
-#print user_data
 
 for key,coord in user_data.items():
-	print key
-	print coord
 	max_count = 0
 	max_lang = ''
 	for lang, count in coord.items():
