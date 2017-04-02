@@ -1,12 +1,8 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
 \contentsline {section}{\numberline {2}Related Work?}{2}{section.2}
-\contentsline {section}{\numberline {3}Process}{2}{section.3}
-\contentsline {subsection}{\numberline {3.1}Data Retrieval}{2}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Downloading Data}{2}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Determining user location}{2}{subsubsection.3.1.2}
-\contentsline {subsection}{\numberline {3.2}Data Mining}{2}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Data Visualization}{3}{subsection.3.3}
-\contentsline {section}{\numberline {4}Conclusion}{3}{section.4}
-\contentsline {section}{\numberline {5}Future Work}{3}{section.5}
-\contentsline {section}{\numberline {6}Appendix A}{4}{section.6}
-\contentsline {subsection}{\numberline {6.1}Code}{4}{subsection.6.1}
+\contentsline {section}{\numberline {3}Data Collection}{2}{section.3}
+\contentsline {subsection}{\numberline {3.1}Determining user location}{4}{subsection.3.1}
+\contentsline {section}{\numberline {4}Data Pre-processing}{5}{section.4}
+\contentsline {section}{\numberline {5}Data Visualization}{5}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}
+\contentsline {section}{\numberline {7}Future Work}{8}{section.7}
