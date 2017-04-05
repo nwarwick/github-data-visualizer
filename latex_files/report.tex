@@ -37,7 +37,7 @@
 \setlength{\paperheight}{\pprh}
 \setlength{\pdfpagewidth}{\pprw}
 \setlength{\pdfpageheight}{\pprh}
-
+\renewcommand{\baselinestretch}{1.5}
 % Make sure hyperref comes last of your loaded packages, to give it a
 % fighting chance of not being over-written, since its job is to
 % redefine many LaTeX commands.
@@ -75,22 +75,21 @@
 
 \maketitle
 
+\begin{abstract}
+Data has never before been generated at such high speeds. With the ever increasing volume of data becoming available every second, it has become more and more challenging to find meaningful information. Data mining and data visualization are two tools that can help solve this problem. In this paper we discuss the effectiveness of visualization as a data mining tool. We use a classification technique to simplify information and a visualizer as a quick and easy evaluation method. In order to explore these techniques we use GitHub user data to investigate the use of programming languages according to geographic locations. We used a GitHub API to scrap user programming language and location data. In addition, we used Google’s GeoCoding API to convert textual locations to latitudinal and longitudinal coordinates. From that we classified each unique geographic location with a single programming language. We built a visualizer using MapBox which allows us to explore the geographic distribution of programming languages. From this, we concluded that there are trends in programming language popularity and that visualization is indeed a useful data mining tool.
+\end{abstract}
+
+\newpage
 \tableofcontents
+%\newpage
 \listoffigures
 \newpage
 
-\begin{abstract}
-Data has never before been generated at such high speeds. With the ever increasing volume of data becoming available every second, it has become more and more challenging to find meaningful information. Data mining and data visualization are two tools that can help solve this problem. In this paper we discuss the effectiveness of visualization as a data mining tool. We use a classification technique to simplify information and a visualizer as a quick and easy evaluation method. In order to explore these techniques we  use GitHub user data to explore the use of programming languages according to geographic locations. We have scraped GitHub user profiles to get a location and a programming language for each user. From that we can classify each unique geographic location with a single programming language then our visualization tool allows us to explore the geographic distribution of language usage. There is a vast variety of development platforms available, selecting which tools to use can be a challenge. Whether you are a professional looking to stay in the game in this competitive climate or a person just starting their career in tech, looking at the language of choice in your area will help you make a more informed decision.
-
-\end{abstract}
 
 \section{Introduction}
-Fundamentally, data mining is an information extraction technique for identifying patterns and trends in large datasets. It is used to derive conclusions from datasets where manual searching is not feasible, due to memory or time constraints, or the raw data is visually incomprehensive. There is a broad range of techniques and with the surge of /texttt{big data}, it is becoming even more important.
-
-\section{Related Work?}
+Fundamentally, data mining is an information extraction technique for identifying patterns and trends in large datasets. It is used to derive conclusions from datasets where manual searching is not feasible due to constraints on memory or time or because the raw data is visually incomprehensive. There is a broad range of techniques and with the surge of /texttt{big data}, it is becoming even more important. Every digital process generates data. This data can help companies monitor their systems and prevent threats or it can help companies understand customer engagement and adapt to the ever changing ecosystem. GitHub, an online version control platform, is one such system producing endless data just waiting to be mined. It is particularly interesting because the data produced from GitHub allows us to track the changes in the programming. There is a vast variety of development platforms available, selecting which tools to use can be a challenge. Whether you are a professional looking to stay in the game in this competitive climate or a person just starting their career in tech, looking at the language of choice in your area will help you make a more informed decision. The focus of this paper will be on mining the distribution of programming languages based on geographic location. This paper will first discuss the data collection approach and limitation. It will then go on to online the data pre-processing. From there it will explain the visualization technique used and what conclusions could be drawn from it.
 
 \section{Data Collection}
-
 When researching a way to gather data off GitHub user profiles, we found that GitHub has their own API for this\footnote{https://developer.github.com/v3/}. However, it had a rate limit of 60 requests. There are three requests we would need to use if we were to use the GitHub API:
 
 \definecolor{r}{rgb}{1,0,0}
@@ -126,16 +125,12 @@ When researching a way to gather data off GitHub user profiles, we found that Gi
   		\},\\
   		...\\
 		\}
-		]
+		]\\ \\ \\ \\
    	 }
 	}
    \end{itemize}
 
    \item{\texttt{GET /user}}
-	\begin{itemize}
-	   \item{Returns information about the given user}
-	\end{itemize}
-   \item{\texttt{Get /users/:username/repos}}
 	\begin{itemize}
 	   \item{Returns a list of repositories of the given user}
 	   \item{ \{\\
@@ -171,8 +166,12 @@ When researching a way to gather data off GitHub user profiles, we found that Gi
 			  \textcolor{r}{"created\_at"}: \textcolor{b}{"2008-01-14T04:33:35Z"},\\
 			  \textcolor{r}{"updated\_at"}: "\textcolor{b}{2008-01-14T04:33:35Z"}\\
 			}
-		\}\\
+		\}
    	   }
+	\end{itemize}
+   \item{\texttt{GET /users/:username/repos}}
+	\begin{itemize}
+	   \item{Returns information about the given user}
 	\end{itemize}
 \end{itemize}
 
@@ -186,14 +185,9 @@ With this scraper, we wouldn’t have to worry about the rate limitation when re
 
 For both solutions, we would still need a list of users to pass into. The only way we would be able to get this list of users is the \texttt{GET /users} request from the GitHub API. With the rate limit, we were able to get 1800 users per hour with 60 requests. The GitHub API returns some user information with this request, but not the information we need such as “location”, thus, the reason we use the scraper to get user information. We did this 13 times to gather a list of 23400 usernames.
 
-The GitHub API returns JSON data with, among other things, a user’s geographic location and programming language. Unfortunately, the API has a request limitation of 60 requests per hour. Each request return informations for 30 users. We retrieved a total of 23400 user profiles. Therefore, this wasn’t a very efficient process.
-
-      \subsection{Determining user location}
-GitHub allows users to next their location as a free-form text. This can be problematic for getting exact coordinates for a user's location. Google Maps has a Geocoding API which converts text strings of geographic locations into latitudinal and longitudinal coordinates. Unfortunately this API has a usage limitation of 2,500 free requests per day.
-
 \section{Data Pre-processing}
 
-th a working scraper and a list of usernames, we created a script that uses our modified scraper to get the user’s location and most used programming language based on their repositories. We skipped users that did not set a location, organizations and users that have returned a 404 error. This gave us a final 10241 users, 43.7% of our initial list of users. This may have been due to not many people setting locations on their profile.
+With a working scraper and a list of usernames, we created a script that uses our modified scraper to get the user’s location and most used programming language based on their repositories. We skipped users that did not set a location, organizations and users that have returned a 404 error. This gave us a final 10241 users, 43.7% of our initial list of users. This may have been due to not many people setting locations on their profile.
 
 GitHub allows users to set their location as a free-form text. This can be problematic for getting exact coordinates for a user's location. Google Maps has a Geocoding API which converts text strings of geographic locations into latitudinal and longitudinal coordinates. Unfortunately this API has a usage limitation of 2,500 free requests per day. With a paid API key, we were able to exceed this limit. The downside to using this API is that we will only be able to get coordinates for whatever the user sets as their location. It can be as specific as a street address, or it can be as vague as just a country name. It may not be a real location at all. The Geocoder API tries its best to find the best matching coordinates. For example, if a user sets its location to “Canada”, the coordinates returned are in the middle of northern Saskatchewan. These results may not be 100% accurate but it gives the general location of where the user is.
 
@@ -237,20 +231,17 @@ Figure \ref{fig:js}, with the yellow dots, represents the use of JavaScript, whe
 \section{Conclusion}
 In conclusion, we found that there does seem to be small trends in programming language popularity (for some languages) potentially related to geographic locations, however, we would need to analyse a larger dataset to confirm our findings. From our visualization we also found that Ruby and JavaScript are the most popular programming languages in North America and Europe, at least according to our dataset. Ultimately, this application helps to show the power of datavisualization in extracting information from large and complex datasets.
 
-\section{Future Work}
 There are multiple streams of future work for this project, such as creating a heatmap view rather than plotting points and adding a feature that allows for a timelapse, showing the different trends in programming language usage over time. Using a larger dataset would also be beneficial in getting a more useful visualization.
 
 % REFERENCES FORMAT
 % References must be the same font size as other body text.
-\bibliographystyle{SIGCHI-Reference-Format}
-\bibliography{../../latex_files/refs}
-\citation
-\pagebreak
-\onecolumn
-\begingroup
-
-
-\endgroup
+%\bibliographystyle{SIGCHI-Reference-Format}
+%\bibliography{../../latex_files/refs}
+%\citation
+%\pagebreak
+%\onecolumn
+%\begingroup
+%\endgroup
 
 \end{document}
 

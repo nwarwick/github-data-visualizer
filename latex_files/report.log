@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.9)  1 APR 2017 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.9)  4 APR 2017 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,8 +928,18 @@ LaTeX Font Info:    Try loading font information for U+txsyc on input line 77.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 78.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+ [1
+
+
+Non-PDF special ignored!{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/upd
+map/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 83.
  (./report.toc
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
@@ -937,61 +947,70 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 \tf@toc=\write5
 \openout5 = `report.toc'.
 
-(./report.lof)
+ (./report.lof)
 \tf@lof=\write6
 \openout6 = `report.lof'.
 
- [1
+ [2]
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 99.
 
-
-Non-PDF special ignored!{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/upd
-map/pdftex.map}]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 82.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 100.
-
- (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 100.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 99.
 
- (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 130.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 129.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
 
-Overfull \hbox (16.64352pt too wide) in paragraph at lines 103--132
+Overfull \hbox (16.64352pt too wide) in paragraph at lines 102--131
 []\OT1/pcr/m/n/10.95 "avatar[]url"[]: []"https://github.com/images/error/octoca
 t[]happy.gif"[], 
  []
 
-[2]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 141.
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--131
+
+ []
+
+[3] [4]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 136.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
 
-Overfull \hbox (16.64352pt too wide) in paragraph at lines 141--176
+Overfull \hbox (16.64352pt too wide) in paragraph at lines 136--171
 []\OT1/pcr/m/n/10.95 "avatar[]url"[]: []"https://github.com/images/error/octoca
 t[]happy.gif"[], 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--176
-
- []
-
-[3]
+[5]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
@@ -1004,15 +1023,7 @@ Missing character: There is no ù in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ô in font ptmr7t!
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 191.
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ô in font ptmr7t!
- [4]
+ [6]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -1034,74 +1045,72 @@ Missing character: There is no ô in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
- [5] <images/Visualizer.png, id=85, 1686.3pt x 922.44624pt>
+ [7] <images/Visualizer.png, id=78, 1686.3pt x 922.44624pt>
 File: images/Visualizer.png Graphic file (type png)
 
 <use images/Visualizer.png>
-Package pdftex.def Info: images/Visualizer.png used on input line 212.
+Package pdftex.def Info: images/Visualizer.png used on input line 206.
 (pdftex.def)             Requested size: 421.57397pt x 230.611pt.
-
+ [8]
 <images/JavaScript.png, id=88, 1686.3pt x 922.44624pt>
 File: images/JavaScript.png Graphic file (type png)
 
 <use images/JavaScript.png>
-Package pdftex.def Info: images/JavaScript.png used on input line 223.
+Package pdftex.def Info: images/JavaScript.png used on input line 217.
 (pdftex.def)             Requested size: 421.57397pt x 230.611pt.
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.227 
+l.221 
        <./images/Visualizer.png>]
-<images/PHP.png, id=96, 1685.29625pt x 917.4275pt>
+<images/PHP.png, id=94, 1685.29625pt x 917.4275pt>
 File: images/PHP.png Graphic file (type png)
  <use images/PHP.png>
-Package pdftex.def Info: images/PHP.png used on input line 230.
+Package pdftex.def Info: images/PHP.png used on input line 224.
 (pdftex.def)             Requested size: 421.32303pt x 229.35631pt.
 
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
-has been already used, duplicate ignored
+[10pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.239 
+l.233 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.239 
-       <./images/JavaScript.png> <./images/PHP.png>]
-No file report.bbl.
-[8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
+l.233 
+       <./images/JavaScript.png> <./images/PHP.png>] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 246.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 246.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 246.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 246.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D7CD849F3CB6FDFCA1F5119864545604;435.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
+(rerunfilecheck)             Checksum: 7A64A291EF6D7CC5D37F543250AD7285;259.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 246.
  ) 
 Here is how much of TeX's memory you used:
- 18883 strings out of 493091
- 347052 string characters out of 6134971
- 413105 words of memory out of 5000000
- 21959 multiletter control sequences out of 15000+600000
- 44670 words of font info for 104 fonts, out of 8000000 for 9000
+ 18876 strings out of 493091
+ 346963 string characters out of 6134971
+ 412111 words of memory out of 5000000
+ 21954 multiletter control sequences out of 15000+600000
+ 43044 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,68p,1350b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,8n,68p,1546b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (8 pages, 1634515 bytes).
+Output written on report.pdf (11 pages, 1633902 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 135 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  25 named destinations out of 1000 (max. 500000)
- 92 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
