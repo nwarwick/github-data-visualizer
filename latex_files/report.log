@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.9)  4 APR 2017 19:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.9)  4 APR 2017 20:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -952,15 +952,15 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 \openout6 = `report.lof'.
 
  [2]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 90.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 LaTeX Font Info:    Try loading font information for TS1+ptm on input line 99.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 99.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Try loading font information for OMS+pcr on input line 129.
 
@@ -1045,14 +1045,14 @@ Missing character: There is no ™ in font ptmr7t!
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
- [7] <images/Visualizer.png, id=78, 1686.3pt x 922.44624pt>
+ [7] <images/Visualizer.png, id=80, 1686.3pt x 922.44624pt>
 File: images/Visualizer.png Graphic file (type png)
 
 <use images/Visualizer.png>
 Package pdftex.def Info: images/Visualizer.png used on input line 206.
 (pdftex.def)             Requested size: 421.57397pt x 230.611pt.
  [8]
-<images/JavaScript.png, id=88, 1686.3pt x 922.44624pt>
+<images/JavaScript.png, id=90, 1686.3pt x 922.44624pt>
 File: images/JavaScript.png Graphic file (type png)
 
 <use images/JavaScript.png>
@@ -1065,7 +1065,7 @@ Package pdftex.def Info: images/JavaScript.png used on input line 217.
                                                   \fi \fi 
 l.221 
        <./images/Visualizer.png>]
-<images/PHP.png, id=94, 1685.29625pt x 917.4275pt>
+<images/PHP.png, id=96, 1685.29625pt x 917.4275pt>
 File: images/PHP.png Graphic file (type png)
  <use images/PHP.png>
 Package pdftex.def Info: images/PHP.png used on input line 224.
@@ -1094,23 +1094,23 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 246.
  ) 
 Here is how much of TeX's memory you used:
- 18876 strings out of 493091
- 346963 string characters out of 6134971
+ 18877 strings out of 493091
+ 346974 string characters out of 6134971
  412111 words of memory out of 5000000
  21954 multiletter control sequences out of 15000+600000
  43044 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,68p,1546b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,8n,68p,1632b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (11 pages, 1633902 bytes).
+Output written on report.pdf (11 pages, 1633427 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
+ 137 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
  68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
